@@ -1,0 +1,25 @@
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"   >
+
+    <solid
+        android:color="@color/light_dark_red" >
+    </solid>
+
+    <stroke
+        android:width="2dp"
+        android:color="@color/light_dark_red" >
+    </stroke>
+
+    <padding
+        android:left="@dimen/dimen_28"
+        android:top="@dimen/dimen_28"
+        android:right="@dimen/dimen_28"
+        android:bottom="@dimen/dimen_28"    >
+    </padding>
+
+    <corners
+        android:radius="200dp">
+    </corners>
+
+</shape>

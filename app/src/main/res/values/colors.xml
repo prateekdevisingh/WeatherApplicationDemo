@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#304e9f</color>
+    <color name="white">#FFFFFF</color>
+    <color name="normal_item_background">#000000</color>
+    <color name="forgotpasswordcolor">#505AF0</color>
+    <color name="login_button_color">#0a67db</color>
+    <color name="as_guest_color">#23E5FE</color>
+    <color name="sign_up_color">#1F7AEC</color>
+
+
+    <color name="edittextcolor">#9A9A9A</color>
+    <color name="logintitle">#404040</color>
+    <color name="green_badge">#48A41F</color>
+    <color name="red_badge">#E62424</color>
+    <color name="blue_badge">#237EF0</color>
+    <color name="yellow_badge">#F2B50D</color>
+    <color name="yellow_rating">#FFF505</color>
+
+    <!--social color -->
+    <color name="whats_app_color">#34AF23</color>
+    <color name="twitter_color">#4099FF</color>
+    <color name="facebook_color">#3b5998</color>
+    <color name="gmail_color">#c71610</color>
+
+    <!-- Use with black text -->
+    <!-- Use with black text -->
+    <!-- Use with black text -->
+    <color name="cyan_300">#4db6ac</color> <!-- Use with black text -->
+    <!-- Use with black text -->
+    <!-- Use with white text -->
+    <!-- Use with white text -->
+    <!-- Use with white text -->
+    <!-- Use with white text -->
+    <!-- Use with white text -->
+    <!-- Use with black text -->
+    <!-- Use with black text -->
+    <!-- Use with black text -->
+    <!-- Use with black text -->
+    <color name="cyan_a800">#09000000</color> <!-- Use with black text -->
+
+    <color name="customize_interest_color">#2ecc71</color>
+    <color name="black_6">#18000000</color>
+    <color name="black_00">#00000000</color>
+    <color name="black_12">#1F000000</color>
+    <color name="black_20">#33000000</color>
+    <color name="black_40">#40000000</color>
+    <color name="black_54">#8A000000</color>
+    <color name="black_84">#D6000000</color>
+    <color name="black_87">#DE000000</color>
+    <color name="white_40">#40FFFFFF</color>
+    <color name="white_54">#8AFFFFFF</color>
+    <color name="white_20">#33FFFFFF</color>
+    <color name="white_12">#1FFFFFFF</color>
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="white_84">#D6FFFFFF</color>
+    <color name="white_0">#00FFFFFF</color>
+    <color name="white_transparent">#00FFFFFF</color>
+    <color name="green">#379D29</color>
+    <color name="invite_button">#0564DA</color>
+    <color name="tv_news_horizontal_color">#E4EBF3</color>
+    <color name="white_header_dark">#BDBDBD</color>
+    <color name="pager_background">#F9F9F9</color>
+    <color name="comment_background">#EBEBEB</color>
+    <color name="filter_close">#ff4646</color>
+    <color name="ratio_button_tint">#D20FCB</color>
+    <color name="original_select_indicator">#19DEF7</color>
+    <color name="wrong_answer">#333333</color>
+    <color name="right_answer">#16B93C</color>
+    <color name="search_color">#19DDF7</color>
+    <color name="search_color_dark">#06b9d1</color>
+    <color name="filter_circle_bg">#0564db</color>
+
+
+    <color name="dark_yellow">#cccc00</color>
+    <color name="cyan_color">#19DEF7</color>
+    <color name="cyan_color_20">#3319DEF7</color>
+    <color name="purple_color">#D20FCB</color>
+    <color name="red_color">#ff4646</color>
+    <color name="blue">#0663DA</color>
+    <color name="light_green">#32cd32</color>
+    <color name="light_white">#f9f9f9</color>
+
+    <color name="sub_btn_background">#0564db</color>
+    <color name="sub_btn_line">#D20FCB</color>
+    <color name="sub_btn_ripple">#eff0f2</color>
+    <color name="sub_btn_tick">#eff0f2</color>
+    <color name="gray">#627676</color>
+    <color name="light_gray">#AAD3D3D3</color>
+    <color name="yellow">#eef26c</color>
+    <color name="black">#000000</color>
+    <color name="orange">#E77E23</color>
+    <color name="red_light">#E85858</color>
+    <color name="color_gradient_cyan">#0395C2</color>
+    <color name="color_gradient_cyan_center">#900395C2</color>
+    <color name="color_gradient_blue">#0240A3</color>
+    <color name="color_gradient_blue_center">#900240A3</color>
+    <color name="color_gradient_red">#BB0FB1</color>
+    <color name="color_gradient_red_center">#90BB0FB1</color>
+    <color name="dark_red">#9E2A77</color>
+
+    <color name="light_dark_red">#a94286</color>#CE94BB
+
+
+    <!-- <color name="sub_btn_background">#424a52</color>
+     <color name="sub_btn_line">#00c68c</color>
+     <color name="sub_btn_ripple">#eff0f2</color>
+     <color name="sub_btn_tick">#eff0f2</color>
+     <color name="gray">#627676</color>
+     <color name="yellow">#eef26c</color>
+     <color name="black">#000000</color>-->
+
+</resources>

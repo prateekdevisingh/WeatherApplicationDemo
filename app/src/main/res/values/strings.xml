@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">WeatherApplication</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="change_city">Change city</string>
+
+    <!-- Put your own APP ID here -->
+    <string name="open_weather_maps_app_id">cc5b1d8567d6d82c0d7f697a53628e62</string>
+
+    <string name="weather_sunny">&#xf00d;</string>
+    <string name="weather_clear_night">&#xf02e;</string>
+
+    <string name="weather_foggy">&#xf014;</string>
+    <string name="weather_cloudy">&#xf013;</string>
+    <string name="weather_rainy">&#xf019;</string>
+    <string name="weather_snowy">&#xf01b;</string>
+    <string name="weather_thunder">&#xf01e;</string>
+    <string name="weather_drizzle">&#xf01c;</string>
+    <string name="place_not_found">Sorry, no weather data found.</string>
+    <string name="week_name">Sunday</string>
+    <string name="days">Day</string>
+    <string name="max_temp">Max</string>
+    <string name="min_temp">Min</string>
+    <string name="cloud">Cloudy</string>
+    <string name="facebook_app_id">472593833124047</string>
+    <string name="fb_login_protocol_scheme">fb472593833124047</string>
+    <string name="internat_connection_error">Please, check internat connection</string>
+    <string name="please_wait">Please wait !</string>
+    <string name="login_name">Login</string>
+    <string name="wind">Wind :</string>
+    <string name="humidity">Humidity :</string>
+    <string name="pressure">Pressure :</string>
+    <string name="speed">Speed :</string>
+    <string name="snow">Snow :</string>
+
+</resources>
