@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,21 +9,40 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_44"
+        android:visibility="visible"
+        android:orientation="vertical"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="3"
-        android:visibility="visible">
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/dimen_8">
+
+        <TextView
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/mTextViewLoginName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_facebook"
+            android:textSize="@dimen/dimen_28"
+            android:padding="@dimen/dimen_2"
+            android:layout_marginLeft="@dimen/dimen_16"
+            android:layout_marginRight="@dimen/dimen_16"
+            android:layout_above="@+id/iv_facebook"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/dimen_16"
+            android:textColor="@color/light_dark_red"/>
 
 
-            <ImageView
-                android:id="@+id/iv_facebook"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@color/white"
-                android:clickable="true"
-                android:padding="@dimen/dimen_10"
-                app:srcCompat="@drawable/facebook_app_logo" />
-        </LinearLayout>
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/iv_facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/facebook_app_logo"
+            android:clickable="true"
+            android:padding="@dimen/dimen_10"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+    </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

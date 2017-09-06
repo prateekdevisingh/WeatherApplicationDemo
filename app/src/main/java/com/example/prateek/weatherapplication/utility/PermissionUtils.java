@@ -19,7 +19,11 @@ import java.util.Map;
 
 
 /**
- * Created by Jaison on 02/05/17.
+ * Created by Prateek on 01/09/17.
+ */
+
+/**
+ * This is s permission utils class for location permissions
  */
 
 public class PermissionUtils

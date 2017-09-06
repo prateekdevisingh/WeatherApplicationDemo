@@ -12,6 +12,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * Created by Prateek on 25/08/17.
+ */
+
+/**
+ * This class is used to APIs fetching and getting response in json format
+ */
 public class RemoteFetch {
 
     public static JSONObject getJSON(Context context, String city, String urlapi) {

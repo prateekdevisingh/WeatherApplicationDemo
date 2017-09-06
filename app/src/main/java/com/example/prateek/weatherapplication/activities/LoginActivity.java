@@ -48,28 +48,14 @@ import java.util.Arrays;
 
 
 /**
- * This is a LoginActivity
+ * This is a LoginActivity class
  */
 public class LoginActivity extends AppCompatActivity implements OnClickListener{
     public static final String TAG = "LoginActivity";
     private ProgressDialog progressDialog;
-    public static final int FACEBOOK_AUTH_CODE = 10002;
-    public static final int GOOGLE_AUTH_CODE = 10003;
-    public static final int TWITTER_AUTH_CODE = 10004;
     private String registerData = "";
 
-
-    private EditText editTextPassword;
-    private EditText editTextEmail;
-    private Button butLogin;
-    private Button mExplore_as_guest;
-    private TextInputLayout textInputLayoutEmail, textInputLayoutPassword;
-
-
-    private boolean mPasswordType = false;
-
-
-    private ImageView mIVfacebook, mIVtwitter, mIVgooglepluse;
+    private ImageView mIVfacebook;
 
 
     //============== facebook variables initialize =============//
@@ -78,10 +64,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener{
 
     /**
      * This function is used to call function initView
-     * and call setTypeface function
-     * and call twitterButtonCallback function
      * and call facebookInitialize function
-     * and call googlePlusInitialization function
      *
      * @param savedInstanceState
      */
@@ -102,9 +85,15 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener{
             startActivity(intent);
             finish();
         }else {
+
+            /**
+             * This function is used to initialize facebook
+             */
             facebookInitialize();
 
-
+            /**
+             * This function is used to initialize all views
+             */
             initView();
 
         }
@@ -199,31 +188,6 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener{
         finish();
 
     }
-
-    /**
-     * This function is used to call waiting dialog
-     */
-    private void showProgressDialog() {
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
-            progressDialog = new ProgressDialog(this, R.style.AppCompatProgressDialogStyle);
-        }else{
-            progressDialog = new ProgressDialog(this);
-        }
-        progressDialog.setMessage(getString(R.string.please_wait));
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-    }
-
-    /**
-     * This function is used to call dismiss dialog
-     */
-    private void dismissProgressDialog() {
-        if (progressDialog != null && progressDialog.isShowing()) {
-            progressDialog.dismiss();
-            progressDialog = null;
-        }
-    }
-
 
 
     /**

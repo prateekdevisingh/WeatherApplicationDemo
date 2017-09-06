@@ -25,13 +25,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Prateek on 24/08/17.
+ * Created by Prateek on 25/08/17.
  */
 
+
+/**
+ * This class is used to display forecast data
+ */
 public class FiveDayForeCastActivity extends AppCompatActivity {
 
-    Typeface weatherFont;
-    Handler handler;
+    Typeface mWeatherFont;
+    Handler mHandler;
 
     private RecyclerView mRecyclerViewFiveDaysForecast;
     private LinearLayoutManager mLinearLayoutManager;
@@ -39,11 +43,24 @@ public class FiveDayForeCastActivity extends AppCompatActivity {
 
     ArrayList<FiveDaysForecastModel> fiveDaysForecastArrayList;
     String mCountDays;
+    String mCity;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fivedaysforecast);
+
+        try {
+            if(getIntent().getStringExtra(Constant.CITY_KEY)!=null){
+                mCity = getIntent().getStringExtra(Constant.CITY_KEY);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        /**
+         * This function is used to initialize all the views
+         */
         initializeViews();
 
     }
@@ -53,37 +70,23 @@ public class FiveDayForeCastActivity extends AppCompatActivity {
         mRecyclerViewFiveDaysForecast = (RecyclerView) findViewById(R.id.mRecyclerViewFiveDaysForecast);
         mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerViewFiveDaysForecast.setLayoutManager(mLinearLayoutManager);
-        weatherFont = Typeface.createFromAsset(getAssets(), "fonts/weather.ttf");
+        mWeatherFont = Typeface.createFromAsset(getAssets(), "fonts/weather.ttf");
 
-        readAssestJson();
-        updateWeatherData(new CityPreference(this).getCity());
+
+        /**
+         * This function is used to update Weather Data by passing city
+         */
+        updateWeatherData(mCity);
     }
 
-    private void readAssestJson() {
-        try {
-            InputStream inputStream = getAssets().open("city.list.json");
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-
-            String jsonData = new String(buffer, "UTF-8");
-
-            JSONObject jsonobject = new JSONObject(jsonData);
-            Log.e("","");
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
     private void updateWeatherData(final String city) {
-        handler = new Handler();
+        mHandler = new Handler();
         new Thread() {
             public void run() {
-                final JSONObject json = RemoteFetch.getJSON(getApplicationContext(), city, Constant.OPEN_FORECAST_MAP_API);
+                final JSONObject json = RemoteFetch.getJSON(getApplicationContext(), city, Constant.BASE_URL + Constant.OPEN_FORECAST_API + "&appid=" + Constant.OPEN_WEATHER_API_ID);
                 if (json == null) {
-                    handler.post(new Runnable() {
+                    mHandler.post(new Runnable() {
                         public void run() {
                             Toast.makeText(getApplicationContext(),
                                     getString(R.string.place_not_found),
@@ -91,8 +94,12 @@ public class FiveDayForeCastActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    handler.post(new Runnable() {
+                    mHandler.post(new Runnable() {
                         public void run() {
+
+                            /**
+                             * This function is used to parse the weather data by passing json object
+                             */
                             parseWeatherData(json);
                         }
                     });
@@ -145,16 +152,6 @@ public class FiveDayForeCastActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private static class GroupItem {
-        String title;
-        List<ChildItem> items = new ArrayList<ChildItem>();
-    }
-
-    private static class ChildItem {
-        String title;
-        String hint;
     }
 
 

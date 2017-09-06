@@ -9,6 +9,9 @@ import java.util.ArrayList;
  * Created by Prateek on 24/08/17.
  */
 
+/**
+ * This is model class for seven days data from API
+ */
 public class FiveDaysForecastModel implements Serializable {
     String dt;
 
@@ -57,6 +60,11 @@ public class FiveDaysForecastModel implements Serializable {
         this.context = context;
     }
 
+
+    /**
+     * These all are getters and setters for all objects
+     * @return
+     */
     public String getDt() {
         return dt;
     }

@@ -19,17 +19,19 @@ import java.util.Date;
  * Created by Prateek on 24/08/17.
  */
 
+/**
+ * This is a adapter class
+ */
 public class FiveDaysForecastAdapter extends RecyclerView.Adapter<FiveDaysForecastAdapter.DataObjectViewHolder> {
 
 
     private Context mContext;
     private ArrayList<FiveDaysForecastModel> fiveDaysForecastArrayList;
     private String mCountDays;
+    String mUpdatedOn;
 
-    /*
-        DateFormat df = DateFormat.getDateTimeInstance();
-    */
-    DateFormat df = DateFormat.getDateInstance();
+
+    DateFormat mDateforamt = DateFormat.getDateInstance();
 
     public FiveDaysForecastAdapter(FiveDayForeCastActivity fiveDayForeCastActivity, ArrayList<FiveDaysForecastModel> fiveDaysForecastArrayList, String mCountDays) {
 
@@ -38,6 +40,13 @@ public class FiveDaysForecastAdapter extends RecyclerView.Adapter<FiveDaysForeca
         this.mCountDays = mCountDays;
     }
 
+
+    /**
+     * This function is used to inflate the list_row_fivedaysforecast for views
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @Override
     public DataObjectViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row_fivedaysforecast, null);
@@ -45,6 +54,12 @@ public class FiveDaysForecastAdapter extends RecyclerView.Adapter<FiveDaysForeca
         return dataObjectViewHolder;
     }
 
+
+    /**
+     * This function is used to bind the data on views
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(DataObjectViewHolder holder, int position) {
 
@@ -53,20 +68,20 @@ public class FiveDaysForecastAdapter extends RecyclerView.Adapter<FiveDaysForeca
 
 
             holder.mTextViewCloud.setText(fiveDaysForecastModel.getDescription());
-            holder.mTextViewMaxTemp.setText(String.format("%.0f", (Double.parseDouble(fiveDaysForecastModel.getMin()) - 273.16f)) + "\u00B0 C");
-            holder.mTextViewMinTemp.setText(String.format("%.0f", (Double.parseDouble(fiveDaysForecastModel.getMax()) - 273.16f)) + "\u00B0 C");
+            holder.mTextViewMaxTemp.setText(String.format("%.0f", (Double.parseDouble(fiveDaysForecastModel.getMin()))) + "\u00B0 C");
+            holder.mTextViewMinTemp.setText(String.format("%.0f", (Double.parseDouble(fiveDaysForecastModel.getMax()))) + "\u00B0 C");
             holder.mTextViewHumidity.setText(fiveDaysForecastModel.getHumidity() + " %");
             holder.mTextViewPressue.setText(fiveDaysForecastModel.getPressure() + " hPa");
             holder.mTextViewSnow.setText(fiveDaysForecastModel.getSnow() + " %");
             holder.mTextViewSpeed.setText(fiveDaysForecastModel.getSpeed() + " km/h");
-            holder.mTextViewTempAfternoon.setText(String.format("%.0f", Double.parseDouble(fiveDaysForecastModel.getDay()) - 273.16f) + "\u00B0 C");
-            holder.mTextViewTempMorn.setText(String.format("%.0f", Double.parseDouble(fiveDaysForecastModel.getMorn()) - 273.16f) + "\u00B0 C");
-            holder.mTextViewTempEven.setText(String.format("%.0f", Double.parseDouble(fiveDaysForecastModel.getEve()) - 273.16f) + "\u00B0 C");
-            holder.mTextViewTempNight.setText(String.format("%.0f", Double.parseDouble(fiveDaysForecastModel.getNight()) - 273.16f) + "\u00B0 C");
+            holder.mTextViewTempAfternoon.setText(String.format("%.0f", Double.parseDouble(fiveDaysForecastModel.getDay())) + "\u00B0 C");
+            holder.mTextViewTempMorn.setText(String.format("%.0f", Double.parseDouble(fiveDaysForecastModel.getMorn())) + "\u00B0 C");
+            holder.mTextViewTempEven.setText(String.format("%.0f", Double.parseDouble(fiveDaysForecastModel.getEve())) + "\u00B0 C");
+            holder.mTextViewTempNight.setText(String.format("%.0f", Double.parseDouble(fiveDaysForecastModel.getNight())) + "\u00B0 C");
             holder.mTextViewWind.setText(fiveDaysForecastModel.getDescription() + ", " + fiveDaysForecastModel.getSpeed() + " km/h");
 
-            String updatedOn = df.format(new Date(Long.parseLong(fiveDaysForecastModel.getDt()) * 1000));
-            holder.mTextViewWeekDayName.setText(updatedOn);
+            mUpdatedOn = mDateforamt.format(new Date(Long.parseLong(fiveDaysForecastModel.getDt()) * 1000));
+            holder.mTextViewWeekDayName.setText(mUpdatedOn);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,11 +90,19 @@ public class FiveDaysForecastAdapter extends RecyclerView.Adapter<FiveDaysForeca
 
     }
 
+
+    /**
+     * This function is used to return the count value
+     * @return
+     */
     @Override
     public int getItemCount() {
         return (null != fiveDaysForecastArrayList ? fiveDaysForecastArrayList.size() : 0);
     }
 
+    /**
+     * This is holder class to avoid the repitation of views in layout
+     */
     public class DataObjectViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView mTextViewMaxTemp;

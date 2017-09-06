@@ -22,9 +22,18 @@ import com.example.prateek.weatherapplication.utility.Constant;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * Created by Prateek on 01/09/17.
+ */
+
+/**
+ * This is a fragment class
+ */
 public class WeatherFragment extends Fragment {
 
     Typeface weatherFont;
@@ -41,10 +50,13 @@ public class WeatherFragment extends Fragment {
     TextView mTextViewWeatherIcon;
     TextView mTextViewMaxTemp;
     TextView mTextViewMinTemp;
+    TextView mTextViewWeekName;
     ImageView mImageViewSun;
 
     Handler mHandler;
-    DateFormat df = DateFormat.getDateTimeInstance();
+
+    //For date format create a instance of it
+    DateFormat mDateFormat = DateFormat.getDateTimeInstance();
 
     public WeatherFragment() {
         mHandler = new Handler();
@@ -55,6 +67,25 @@ public class WeatherFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_weather, container, false);
+
+        /**
+         * This function is used to initialize all views
+         */
+        initializeViews(rootView);
+
+        /**
+         * Translation animation Function for sun from co ordinate x to y for sunrise and sunset
+         */
+        sunInitializeAnimation();
+
+
+        return rootView;
+
+    }
+
+
+    private void initializeViews(View rootView) {
+
         mTextViewCityName = (TextView) rootView.findViewById(R.id.mTextViewCityName);
         mTextViewHumidity = (TextView) rootView.findViewById(R.id.mTextViewHumidity);
         mTextViewPressure = (TextView) rootView.findViewById(R.id.mTextViewPressure);
@@ -67,17 +98,10 @@ public class WeatherFragment extends Fragment {
         mTextViewWeatherIcon = (TextView) rootView.findViewById(R.id.mTextViewWeatherIcon);
         mTextViewMaxTemp = (TextView) rootView.findViewById(R.id.mTextViewMaxTemp);
         mTextViewMinTemp = (TextView) rootView.findViewById(R.id.mTextViewMinTemp);
+        mTextViewWeekName = (TextView) rootView.findViewById(R.id.mTextViewWeekName);
         mImageViewSun = (ImageView) rootView.findViewById(R.id.mImageViewSun);
 
         mTextViewWeatherIcon.setTypeface(weatherFont);
-
-
-        /**
-         * Translation animation Function for sun from co ordinate x to y for sunrise and sunset
-         */
-
-        sunInitializeAnimation();
-        return rootView;
 
 
     }
@@ -95,14 +119,26 @@ public class WeatherFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /**
+         * setting Typeface
+         */
         weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/weather.ttf");
+
+        /**
+         * Getting city preferences and send to updateWeatherData function
+         */
         updateWeatherData(new CityPreference(getActivity()).getCity());
     }
 
     private void updateWeatherData(final String city) {
+
+        /**
+         * This thread is used to call apis and get response in json format
+         */
         new Thread() {
             public void run() {
-                final JSONObject json = RemoteFetch.getJSON(getActivity(), city, Constant.OPEN_WEATHER_MAP_API);
+                final JSONObject json = RemoteFetch.getJSON(getActivity(), city, Constant.BASE_URL + Constant.OPEN_WEATHER_API);
                 if (json == null) {
                     mHandler.post(new Runnable() {
                         public void run() {
@@ -114,6 +150,9 @@ public class WeatherFragment extends Fragment {
                 } else {
                     mHandler.post(new Runnable() {
                         public void run() {
+                            /**
+                             * This function is used to pass json data in renderWeather function for parsing
+                             */
                             renderWeather(json);
                         }
                     });
@@ -138,18 +177,22 @@ public class WeatherFragment extends Fragment {
             mTextViewMinTempMain.setText(
                     String.format("%.0f", main.getDouble("temp")) + " ℃");
 
-            String mSunriseDate = df.format(new Date(json.getJSONObject("sys").optLong("sunrise") * 1000));
-            String mSunsetDate = df.format(new Date(json.getJSONObject("sys").optLong("sunset") * 1000));
+            String mSunriseDate = mDateFormat.format(new Date(json.getJSONObject("sys").optLong("sunrise") * 1000));
+            String mSunsetDate = mDateFormat.format(new Date(json.getJSONObject("sys").optLong("sunset") * 1000));
             mTextViewSunrise.setText(mSunriseDate);
             mTextViewSunset.setText(mSunsetDate);
             mTextViewHumidity.setText(main.getString("humidity") + " %");
             mTextViewMaxTemp.setText(String.format("%.0f", main.getDouble("temp_max")) + " ℃");
             mTextViewMinTemp.setText(String.format("%.0f", main.getDouble("temp_min")) + " ℃");
 
-
-            String updatedOn = df.format(new Date(json.getLong("dt") * 1000));
+            mTextViewWeekName.setText(new SimpleDateFormat("EEEE").format(new Date(json.getLong("dt") * 1000)));
+            String updatedOn = mDateFormat.format(new Date(json.getLong("dt") * 1000));
             mTextViewLastUpdatedDate.setText(updatedOn);
 
+
+            /**
+             * This function is used to getting weather icon as per APIs
+             */
             setWeatherIcon(details.getInt("id"),
                     json.getJSONObject("sys").getLong("sunrise") * 1000,
                     json.getJSONObject("sys").getLong("sunset") * 1000);

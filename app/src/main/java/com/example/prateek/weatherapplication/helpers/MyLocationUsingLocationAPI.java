@@ -47,6 +47,15 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+
+/**
+ * Created by Prateek on 25/08/17.
+ */
+
+
+/**
+ * This is Mylocation class using Location API to get the location
+ */
 public class MyLocationUsingLocationAPI extends AppCompatActivity implements ConnectionCallbacks,
         OnConnectionFailedListener,OnRequestPermissionsResultCallback,
         PermissionUtils.PermissionResultCallback {
@@ -59,13 +68,13 @@ public class MyLocationUsingLocationAPI extends AppCompatActivity implements Con
 
 
     // LogCat tag
-    private static final String TAG = MyLocationUsingHelper.class.getSimpleName();
+    private static final String TAG = MyLocationUsingLocationAPI.class.getSimpleName();
 
     private final static int PLAY_SERVICES_REQUEST = 1000;
     private final static int REQUEST_CHECK_SETTINGS = 2000;
 
     private Location mLastLocation;
-
+    Handler mHandler;
     // Google client to interact with Google API
 
     private GoogleApiClient mGoogleApiClient;
@@ -95,28 +104,11 @@ public class MyLocationUsingLocationAPI extends AppCompatActivity implements Con
         permissionUtils.check_permission(permissions,"Need GPS permission for getting your location",1);
 
 
-        /*rlPick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getLocation();
-
-                if (mLastLocation != null) {
-                    latitude = mLastLocation.getLatitude();
-                    longitude = mLastLocation.getLongitude();
-                    getAddress();
-
-                } else {
-
-                    if(btnProceed.isEnabled())
-                        btnProceed.setEnabled(false);
-
-                    showToast("Couldn't get the location. Make sure location is enabled on the device");
-                }
-            }
-        });*/
-
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+        /**
+         * This is handler used to get latitude and longitude
+         */
+        mHandler = new Handler();
+        mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 // Do something after 5s = 5000ms
@@ -400,8 +392,10 @@ public class MyLocationUsingLocationAPI extends AppCompatActivity implements Con
     }
 
 
-
-
+    /**
+     * Permisson grant check
+     * @param request_code
+     */
     @Override
     public void PermissionGranted(int request_code) {
         Log.i("PERMISSION","GRANTED");

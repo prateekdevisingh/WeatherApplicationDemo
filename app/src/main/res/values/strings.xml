@@ -36,5 +36,7 @@
     <string name="pressure">Pressure :</string>
     <string name="speed">Speed :</string>
     <string name="snow">Snow :</string>
+    <string name="login_facebook">Login by Facebook</string>
+
 
 </resources>

@@ -25,6 +25,14 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * Created by Prateek on 05/09/17.
+ */
+
+
+/**
+ * This is a location helper class
+ */
 public class MyLocationUsingHelper extends AppCompatActivity implements ConnectionCallbacks,
         OnConnectionFailedListener,OnRequestPermissionsResultCallback {
 
@@ -51,35 +59,16 @@ public class MyLocationUsingHelper extends AppCompatActivity implements Connecti
         locationHelper.checkpermission();
 
         ButterKnife.bind(this);
-/*
-
-        rlPick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                mLastLocation=locationHelper.getLocation();
-
-                if (mLastLocation != null) {
-                    latitude = mLastLocation.getLatitude();
-                    longitude = mLastLocation.getLongitude();
-                    getAddress();
-
-                } else {
-
-                    if(btnProceed.isEnabled())
-                        btnProceed.setEnabled(false);
-
-                    showToast("Couldn't get the location. Make sure location is enabled on the device");
-                }
-            }
-        });
-*/
 
         mLastLocation=locationHelper.getLocation();
 
         if (mLastLocation != null) {
             latitude = mLastLocation.getLatitude();
             longitude = mLastLocation.getLongitude();
+
+            /**
+             * This function is used to getting address by using latitude and longitude
+             */
             getAddress();
 
         } else {

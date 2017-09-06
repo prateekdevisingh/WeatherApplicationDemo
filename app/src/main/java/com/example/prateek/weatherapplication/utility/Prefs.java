@@ -3,6 +3,13 @@ package com.example.prateek.weatherapplication.utility;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+
+
+/**
+ * Created by Prateek on 01/09/17.
+ */
+
+
 public class Prefs {
 
     /**

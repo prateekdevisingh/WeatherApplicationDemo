@@ -12,7 +12,10 @@ public class WeatherApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        FacebookSdk.sdkInitialize(getApplicationContext());
 
+        /**
+         * Facebook initialization occuring
+         */
+        FacebookSdk.sdkInitialize(getApplicationContext());
     }
 }

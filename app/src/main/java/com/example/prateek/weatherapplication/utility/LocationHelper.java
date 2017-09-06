@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Created by Jaison
+ * Created by Prateek 1/09/2017
  */
 
 public class LocationHelper implements PermissionUtils.PermissionResultCallback{
@@ -128,6 +128,13 @@ public class LocationHelper implements PermissionUtils.PermissionResultCallback{
 
     }
 
+
+    /**
+     * Using latitude and longtitude to getting the address
+     * @param latitude
+     * @param longitude
+     * @return
+     */
     public Address getAddress(double latitude,double longitude)
     {
         Geocoder geocoder;
