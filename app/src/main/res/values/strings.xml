@@ -37,6 +37,7 @@
     <string name="speed">Speed :</string>
     <string name="snow">Snow :</string>
     <string name="login_facebook">Login by Facebook</string>
+    <string name="five_days_forecast_data">Five days forecast</string>
 
 
 </resources>

@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -67,6 +68,7 @@ public class FiveDayForeCastActivity extends AppCompatActivity {
 
     private void initializeViews() {
 
+        setTitle(getResources().getString(R.string.five_days_forecast_data));
         mRecyclerViewFiveDaysForecast = (RecyclerView) findViewById(R.id.mRecyclerViewFiveDaysForecast);
         mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerViewFiveDaysForecast.setLayoutManager(mLinearLayoutManager);
